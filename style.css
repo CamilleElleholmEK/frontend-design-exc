@@ -1,76 +1,91 @@
-.card {
-    padding: 1rem;
-
-    .content>*+* {
-        margin-top: .25rlh;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @layer reset, cards;
 
-@layer cards {
-    .cards {
-        list-style: none;
-        padding: 0;
-        max-inline-size: 60ch;
+@layer reset {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
 
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
+  img {
+    inline-size: 100%;
+    block-size: auto;
+    display: block;
+  }
 
-    .card {
-        background: #fff;
-        border-radius: 6px;
-        box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-        overflow: clip;
-    }
+  html {
+    font-family: system-ui;
+    background: #cfd8e4;
+    line-height: 1.5;
+  }
 
-    h3 {
-        color: #0f172a;
-        line-height: 1.3;
-    }
+  body {
+    display: grid;
+    place-content: center;
+    block-size: 100svh;
+  }
 
-    p {
-        color: #334155;
+  .card {
+    padding: 1rem;
+
+    .content > * + * {
+      margin-top: 0.25rlh;
     }
+  }
 }
 
-@layer reset {
-    * {
-        box-sizing: border-box;
-        margin: 0;
-    }
+@layer cards {
+  .cards {
+    list-style: none;
+    padding: 0;
+    max-inline-size: 60ch;
 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow:
+      0 12px 28px 0 rgba(0, 0, 0, 0.2),
+      0 2px 4px 0 rgba(0, 0, 0, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    overflow: clip;
+  }
+
+  h3 {
+    color: #0f172a;
+    line-height: 1.3;
+  }
+
+  p {
+    color: #334155;
+  }
+
+  .card:has(h3):not(:has(img)) {
+    h3 {
+      font-size: 1.6rem;
+    }
+  }
+
+  .card:has(img) {
+    padding: 0px;
     img {
-        inline-size: 100%;
-        block-size: auto;
-        display: block;
+      width: 100%;
+      margin: auto;
+      padding: 0;
     }
 
-    html {
-        font-family: system-ui;
-        background: #CFD8E4;
-        line-height: 1.5;
+    .content {
+      padding: 1rem;
     }
+  }
 
-    body {
-        display: grid;
-        place-content: center;
-        block-size: 100svh;
+  .card:not(:has(h3), :has(img)) {
+    p {
+      font-size: 1.25rem;
+      line-height: 1.4;
     }
+  }
 }
