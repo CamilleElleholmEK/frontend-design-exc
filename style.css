@@ -16,6 +16,7 @@ html {
 }
 
 article {
+  container: article / inline-size;
   padding: 1rlh;
   max-inline-size: 1200px;
   margin-inline: auto;
@@ -23,17 +24,34 @@ article {
   display: grid;
   gap: 1.5rlh;
 
-  @media (width > 768px) {
+  /* @media (width > 768px) {
     grid-template-columns: 300px 1fr;
   }
 
   p {
     font-size: 0.9rem;
     color: var(--body);
-  }
+  } */
 }
 
+/* @container article (width < 550px) {
+  
+  .content {
+    .album-details {
+      text-align: center;
+    }
+    .actions {
+      display: flex;
+      width: 100%;
+      button {
+        flex: 1;
+      }
+    }
+  }
+} */
+
 header {
+  container: header / inline-size;
   img {
     aspect-ratio: 1;
     object-fit: cover;
@@ -123,6 +141,26 @@ header {
     .duration {
       margin-inline-start: auto;
     }
+  }
+}
+
+@container article (width < 550px) {
+  /* fx centrér album-detaljer, fuldbredde knapper, negativ margin på .content */
+  .content {
+    .album-details {
+      justify-content: center;
+      text-align: center;
+    }
+    .actions {
+      display: flex;
+      width: 100%;
+      button {
+        flex: 1;
+      }
+    }
+    margin-top: -5rem;
+
+    background-image: linear-gradient(#ffffff);
   }
 }
 
