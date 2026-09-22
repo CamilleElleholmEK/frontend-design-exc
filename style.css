@@ -1,16 +1,109 @@
 :root {
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-300: #d1d5db;
-    --gray-400: #9ca3af;
-    --gray-500: #6b7280;
-    --gray-600: #4b5563;
-    --gray-700: #374151;
-    --gray-800: #1f2937;
-    --gray-900: #111827;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
 }
 
 body {
-    font-family: system-ui, sans-serif;
+  font-family: system-ui, sans-serif;
+}
+
+.flow {
+  > * + * {
+    margin-top: var(--flow-space, 1rlh);
+  }
+
+  h1 {
+    --flow-space: 2rlh;
+  }
+
+  h2 {
+    --flow-space: 2rlh;
+  }
+
+  h3 {
+    --flow-space: 1rlh;
+    & + * {
+      --flow-space: 0.25rlh;
+    }
+  }
+}
+
+article {
+  --measure: 1000px;
+  --flow-space: 1em;
+  --text-strong: var(--gray-900);
+  --text: var(--gray-800);
+  --text-muted: var(--gray-700);
+
+  max-inline-size: var(--measure);
+  margin-inline: auto;
+  padding: var(--space-l, 2rem) var(--space-m, 1.5rem);
+  color: var(--text);
+
+  --p: progress(100vw, 400px, 1200px);
+
+  h1 {
+    color: var(--text-strong);
+    --min-size: 2rem;
+    --max-size: 3rem;
+    font-size: calc(
+      var(--p) * (var(--max-size) - var(--min-size)) + var(--min-size)
+    );
+  }
+
+  h2 {
+    --min-size: 1.5rem;
+    --max-size: 2rem;
+    font-size: calc(
+      var(--p) * (var(--max-size) - var(--min-size)) + var(--min-size)
+    );
+  }
+
+  h3 {
+    --min-size: 1.25rem;
+    --max-size: 1.75rem;
+    font-size: calc(
+      var(--p) * (var(--max-size) - var(--min-size)) + var(--min-size)
+    );
+  }
+
+  h4 {
+    --min-size: 1.1rem;
+    --max-size: 1.5rem;
+    font-size: calc(
+      var(--p) * (var(--max-size) - var(--min-size)) + var(--min-size)
+    );
+  }
+
+  :not(h1, h2, h3, h4) {
+    --min-size: 1rem;
+    --max-size: 1.1rem;
+    font-size: calc(
+      var(--p) * (var(--max-size) - var(--min-size)) + var(--min-size)
+    );
+  }
+  figcaption,
+  .text-small {
+    color: var(--text-muted);
+  }
+}
+
+article > * {
+  margin-block: 0;
+}
+
+article > * + * {
+  margin-block-start: var(--flow-space);
+}
+
+article :is(h1, h2, h3, h4) {
+  color: var(--text-strong);
 }
