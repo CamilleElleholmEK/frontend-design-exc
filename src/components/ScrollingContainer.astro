@@ -16,5 +16,22 @@ const { cardContent } = Astro.props;
 <style>
   ul {
     list-style: none;
+    display: flex;
+    scroll-snap-type: inline mandatory;
+    overflow-inline: auto;
+    gap: var(--card-gap);
+    padding-inline-start: 1rem;
+    scroll-padding-inline: 1rem;
+    grid-column: 1 / -1;
+  }
+
+  li {
+    flex: 1 0 42ch; 
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    background: var(--card-background);
+    color: var(--card-text-color);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 </style>
